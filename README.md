@@ -3,10 +3,10 @@
 
 例：
 
-private void init() {
+     private void init() {
+
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         List<GroupData<Directory, SubItem>> data = getData();
         DirsAdapter adapter = new DirsAdapter(this, R.layout.item_group, R.layout.item_child, data);
 
@@ -47,40 +47,40 @@ private void init() {
     
     public class DirsAdapter extends ExpandableRecyclerViewAdapter<Directory, SubItem> {
 
-    public DirsAdapter(Context mContext, int mGroupLayoutRes, int mChildLayoutRes,
-                       List<GroupData<Directory, SubItem>> mData) {
-        super(mContext, mGroupLayoutRes, mChildLayoutRes, mData);
-    }
+            public DirsAdapter(Context mContext, int mGroupLayoutRes, int mChildLayoutRes,
+                               List<GroupData<Directory, SubItem>> mData) {
+                super(mContext, mGroupLayoutRes, mChildLayoutRes, mData);
+            }
 
-    @Override
-    public void onExpandableBindView(ExpandableRecyclerViewAdapter.ExpandableViewHolder holder,
-                                     int position, boolean haveSubItem, boolean isExpand) {
-        if (holder instanceof GroupViewHolder) {
-            TextView tvName = holder.getView(R.id.tv_name);
-            TextView tvSize = holder.getView(R.id.tv_num);
-            ImageView image = holder.getView(R.id.image);
+            @Override
+            public void onExpandableBindView(ExpandableRecyclerViewAdapter.ExpandableViewHolder holder,
+                                             int position, boolean haveSubItem, boolean isExpand) {
+                if (holder instanceof GroupViewHolder) {
+                    TextView tvName = holder.getView(R.id.tv_name);
+                    TextView tvSize = holder.getView(R.id.tv_num);
+                    ImageView image = holder.getView(R.id.image);
 
-            Directory directory = (Directory) getItem(position);
-            tvName.setText(directory.name);
-            tvSize.setText(directory.size + "");
-            if (haveSubItem) {
-                if (isExpand) {
-                    image.setImageResource(R.mipmap.ic_launcher);
-                } else {
-                    image.setImageResource(R.drawable.ic_launcher_foreground);
+                    Directory directory = (Directory) getItem(position);
+                    tvName.setText(directory.name);
+                    tvSize.setText(directory.size + "");
+                    if (haveSubItem) {
+                        if (isExpand) {
+                            image.setImageResource(R.mipmap.ic_launcher);
+                        } else {
+                            image.setImageResource(R.drawable.ic_launcher_foreground);
+                        }
+                    } else {
+                        image.setImageResource(0);
+                    }
                 }
-            } else {
-                image.setImageResource(0);
+
+                if (holder instanceof ChildViewHolder) {
+                    TextView tvName = holder.getView(R.id.tv_child_name);
+                    TextView tvSize = holder.getView(R.id.tv_child_num);
+
+                    SubItem subItem = (SubItem) getItem(position);
+                    tvName.setText(subItem.name);
+                    tvSize.setText(subItem.size + "");
+                }
             }
         }
-
-        if (holder instanceof ChildViewHolder) {
-            TextView tvName = holder.getView(R.id.tv_child_name);
-            TextView tvSize = holder.getView(R.id.tv_child_num);
-
-            SubItem subItem = (SubItem) getItem(position);
-            tvName.setText(subItem.name);
-            tvSize.setText(subItem.size + "");
-        }
-    }
-}
