@@ -1,6 +1,9 @@
 # ExpandableRecyclerViewAdapter
 可展开RecyclerView适配器
 
+[![](https://img.shields.io/github/v/release/askilledhand/ExpandableRecyclerViewAdapter.svg)]()
+
+
 例：
 
      private void init() {
