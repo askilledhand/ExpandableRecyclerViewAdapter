@@ -2,7 +2,6 @@
 可展开RecyclerView适配器
 
 [![](https://img.shields.io/github/v/release/askilledhand/ExpandableRecyclerViewAdapter.svg)]()
-[![](https://img.shields.io/github/v/tag/askilledhand/ExpandableRecyclerViewAdapter.svg)]()
 
 
 例：
