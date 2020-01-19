@@ -15,7 +15,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    task makeJar(type: Copy) {
+    /*task makeJar(type: Copy) {
         //删除存在的
         delete 'build/libs/myjar.jar'
         //设置拷贝的文件
@@ -29,7 +29,7 @@ android {
         //重命名
         rename ('classes.jar', 'myjar.jar')
     }
-    makeJar.dependsOn(build)
+    makeJar.dependsOn(build)*/
 }
 
 dependencies {
